@@ -1,27 +1,26 @@
 package org.xian.utils;
 
 import org.xian.exception.ParamException;
+import org.xian.sql.Table;
 import org.xian.sql.TableColumn;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author lgx
  */
 public class ColumnUtils {
 
-    private static Map<String, TableColumn> columnMap = new HashMap<>();
+    private static Map<String, TableColumn> columnMap;
 
     static {
-        columnMap.put("title", new TableColumn("test1", "title", "title"));
-        columnMap.put("name", new TableColumn("test1", "name", "name"));
-        columnMap.put("sex", new TableColumn("test1", "sex", "sex"));
+        List<TableColumn> tables = SQLExecutor.queryList(TableColumn.class, "select table_key, column_key as 'columnKey', column_name as 'name', column_comment as 'comment' from config_column where del_flag = 0");
+        columnMap = tables.stream()
+                .collect(Collectors.toMap(TableColumn::getColumnKey, t -> t));
     }
 
-    public static List<TableColumn> getTableColumns(List<String> columnKeys) {
+    public static List<TableColumn> getTableColumns(Collection<String> columnKeys) {
         List<TableColumn> columns = new ArrayList<>(columnKeys.size());
         for (String columnKey : columnKeys) {
             if(!columnMap.containsKey(columnKey)) {

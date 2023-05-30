@@ -5,17 +5,19 @@ import org.xian.sql.Table;
 import org.xian.sql.TableColumn;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author lgx
  */
 public class TableUtils {
 
-    private static Map<String, Table> tableMap = new HashMap<>();
+    private static Map<String, Table> tableMap;
 
     static {
-        tableMap.put("test1", new Table("test1", "test1"));
-        tableMap.put("test2", new Table("test2", "test2"));
+        List<Table> tables = SQLExecutor.queryList(Table.class, "select table_key as 'key', table_name as 'name', table_comment as 'comment' from config_table where del_flag = 0");
+        tableMap = tables.stream()
+                .collect(Collectors.toMap(Table::getKey, t -> t));
     }
 
     public static Table getTable(String tableKey) {
