@@ -24,7 +24,7 @@ public class SqlGenerator {
 
     private List<String> resultColumns = new ArrayList<>();
 
-    public static SqlGenerator createSelect(String jsonStr) {
+    public static SqlGenerator select(String jsonStr) {
         JSON json = JSONUtil.parse(jsonStr);
         SqlGenerator generator = new SqlGenerator();
         generator.type = OperTypeEnum.SELECT;
