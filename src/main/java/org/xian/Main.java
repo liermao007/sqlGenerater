@@ -17,12 +17,13 @@ public class Main {
                     params: {
                         su1: 'admin',
                     },
-                    results: ['su1', 'su3']
+                    results: ['su1', 'su3'],
+                    tables: [{key: 'su'}, {key: 'sur', s: 'su'}]
                 }
                 """;
+        long l = System.currentTimeMillis();
         SqlBuilder sql = SqlGenerator.select(dataJson).sqlBuilder();
         System.out.println(sql);
-        long l = System.currentTimeMillis();
         List<Entity> entities = SQLExecutor.queryList(Entity.class, sql);
         System.out.println(System.currentTimeMillis() - l);
         System.out.println(sql);
