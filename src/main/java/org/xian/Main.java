@@ -23,6 +23,7 @@ public class Main {
                 """;
         long l = System.currentTimeMillis();
         SqlBuilder sql = SqlGenerator.select(dataJson).sqlBuilder();
+
         System.out.println(sql);
         List<Entity> entities = SQLExecutor.queryList(Entity.class, sql);
         System.out.println(System.currentTimeMillis() - l);

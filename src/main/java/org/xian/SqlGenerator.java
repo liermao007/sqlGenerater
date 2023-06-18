@@ -58,11 +58,41 @@ public class SqlGenerator {
         return generator;
     }
 
+    public static SqlGenerator insert(String jsonStr) {
+        SqlGenerator generator = new SqlGenerator();
+        generator.type = OperTypeEnum.INSERT;
+
+        return generator;
+    }
+
+    public static SqlGenerator update(String jsonStr) {
+        SqlGenerator generator = new SqlGenerator();
+        generator.type = OperTypeEnum.UPDATE;
+
+        return generator;
+    }
+
+    public static SqlGenerator delete(String jsonStr) {
+        SqlGenerator generator = new SqlGenerator();
+        generator.type = OperTypeEnum.DELETE;
+
+        return generator;
+    }
+
+
+
     public SqlBuilder sqlBuilder() {
         return switch (type) {
             case SELECT -> selectSqlBuilder();
-            case INSERT, DELETE, DROP, UPDATE, CREATE -> null;
+            case INSERT -> insertSqlBuilder();
+            case DELETE, DROP, UPDATE, CREATE -> null;
         };
+    }
+
+    private SqlBuilder insertSqlBuilder() {
+        SqlBuilder sqlBuilder = SqlBuilder.create();
+
+        return sqlBuilder;
     }
 
     private SqlBuilder selectSqlBuilder() {
