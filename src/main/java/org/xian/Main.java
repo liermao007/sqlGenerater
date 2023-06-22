@@ -12,6 +12,13 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws SQLException {
+        testDelete();
+
+
+
+    }
+
+    public static void testSelect() {
         String dataJson = """
                 {
                     params: {
@@ -28,5 +35,21 @@ public class Main {
         List<Entity> entities = SQLExecutor.queryList(Entity.class, sql);
         System.out.println(System.currentTimeMillis() - l);
         System.out.println(sql);
+    }
+
+    private static void testDelete() {
+        String dataJson = """
+                {
+                    params: {
+                        su1: 'a',
+                    }
+                }
+                """;
+        SqlGenerator sqlGenerator = SqlGenerator.delete(dataJson);
+        SqlBuilder sql = sqlGenerator.sqlBuilder();
+        System.out.println(sql.build());
+
+        int result = SQLExecutor.execute(sql);
+        System.out.println(result);
     }
 }

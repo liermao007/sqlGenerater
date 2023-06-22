@@ -6,17 +6,19 @@ package org.xian.sql;
 public class TableColumn {
 
     private String tableKey;
+
+    private String tableName;
     private String columnKey;
-    private String name;
+    private String columnName;
     private String comment;
 
     public TableColumn() {
     }
 
-    public TableColumn(String tableKey, String columnKey, String name) {
+    public TableColumn(String tableKey, String columnKey, String columnName) {
         this.tableKey = tableKey;
         this.columnKey = columnKey;
-        this.name = name;
+        this.columnName = columnName;
     }
 
     public String getTableKey() {
@@ -27,6 +29,14 @@ public class TableColumn {
         this.tableKey = tableKey;
     }
 
+    public String getTableName() {
+        return tableName;
+    }
+
+    public void setTableName(String tableName) {
+        this.tableName = tableName;
+    }
+
     public String getColumnKey() {
         return columnKey;
     }
@@ -35,12 +45,12 @@ public class TableColumn {
         this.columnKey = columnKey;
     }
 
-    public String getName() {
-        return name;
+    public String getColumnName() {
+        return columnName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
     }
 
     public String getComment() {

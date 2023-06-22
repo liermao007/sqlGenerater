@@ -11,6 +11,7 @@ import org.xian.exception.QueryException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * sql执行
@@ -48,6 +49,14 @@ public class SQLExecutor {
             return SqlExecutor.query(connection, sql, new BeanHandler<>(clazz), params);
         } catch (SQLException e) {
             throw new QueryException("查询异常", e);
+        }
+    }
+
+    public static int execute(SqlBuilder sql) {
+        try (Connection connection = getConnection()) {
+            return SqlExecutor.execute(connection, sql.build(), sql.getParamValueArray());
+        } catch (SQLException e) {
+            throw new QueryException("执行SQL异常", e);
         }
     }
 

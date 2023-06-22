@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 public class SqlGenerator {
 
     private OperTypeEnum type = null;
-    private Map<String, String> params = new HashMap<>();
+    private Map<String, Object> params = new HashMap<>();
 
     private List<String> resultColumns = new ArrayList<>();
 
@@ -75,6 +75,10 @@ public class SqlGenerator {
     public static SqlGenerator delete(String jsonStr) {
         SqlGenerator generator = new SqlGenerator();
         generator.type = OperTypeEnum.DELETE;
+        JSON json = JSONUtil.parse(jsonStr);
+        generator.params = json.getByPath("params", Map.class);
+
+        generator.whereColumns = ColumnUtils.getTableColumns(generator.params.keySet());
 
         return generator;
     }
@@ -85,7 +89,8 @@ public class SqlGenerator {
         return switch (type) {
             case SELECT -> selectSqlBuilder();
             case INSERT -> insertSqlBuilder();
-            case DELETE, DROP, UPDATE, CREATE -> null;
+            case DELETE -> deleteSqlBuilder();
+            case DROP, UPDATE, CREATE -> null;
         };
     }
 
@@ -93,6 +98,15 @@ public class SqlGenerator {
         SqlBuilder sqlBuilder = SqlBuilder.create();
 
         return sqlBuilder;
+    }
+
+    private SqlBuilder deleteSqlBuilder() {
+        SqlBuilder sqlBuilder = SqlBuilder.create();
+        List<String> tables = this.whereColumns.stream().map(TableColumn::getTableName).collect(Collectors.toList());
+        Condition[] conditions = this.whereColumns.stream()
+                .map(column -> new Condition(column.getColumnName(), this.params.get(column.getColumnKey())))
+                .toArray(Condition[]::new);
+        return sqlBuilder.delete(tables.get(0)).where(conditions);
     }
 
     private SqlBuilder selectSqlBuilder() {
@@ -105,7 +119,7 @@ public class SqlGenerator {
         String[] queryColumns = new String[selectColumns.size()];
         for (int i = 0; i < selectColumns.size(); i++) {
             TableColumn column = selectColumns.get(i);
-            queryColumns[i] = column.getTableKey() + StrPool.DOT + column.getName() + " as '" + column.getColumnKey() + "'";
+            queryColumns[i] = column.getTableKey() + StrPool.DOT + column.getColumnName() + " as '" + column.getColumnKey() + "'";
         }
         sqlBuilder.select(queryColumns);
         return this;
@@ -130,9 +144,13 @@ public class SqlGenerator {
     private SqlGenerator handleWhere(SqlBuilder sqlBuilder) {
         List<Condition> conditions = new ArrayList<>(whereColumns.size());
         for (TableColumn column : whereColumns) {
-            conditions.add(new Condition(column.getTableKey() + StrPool.DOT + column.getName(), params.get(column.getColumnKey())));
+            conditions.add(new Condition(column.getTableKey() + StrPool.DOT + column.getColumnName(), params.get(column.getColumnKey())));
         }
         sqlBuilder.where(conditions.toArray(Condition[]::new));
         return this;
+    }
+
+    public Map<String, Object> getParams() {
+        return params;
     }
 }

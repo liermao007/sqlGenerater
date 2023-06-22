@@ -15,7 +15,7 @@ public class ColumnUtils {
     private static Map<String, TableColumn> columnMap;
 
     static {
-        List<TableColumn> tables = SQLExecutor.queryList(TableColumn.class, "select table_key, column_key as 'columnKey', column_name as 'name', column_comment as 'comment' from config_column where del_flag = 0");
+        List<TableColumn> tables = SQLExecutor.queryList(TableColumn.class, "select table_key as 'tableKey', table_name as 'tableName', column_key as 'columnKey', column_name as 'columnName', column_comment as 'comment' from config_column where del_flag = 0");
         columnMap = tables.stream()
                 .collect(Collectors.toMap(TableColumn::getColumnKey, t -> t));
     }
