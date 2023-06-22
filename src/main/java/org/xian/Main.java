@@ -42,6 +42,7 @@ public class Main {
                 {
                     params: {
                         su1: 'a',
+                        su2: 'b',
                     }
                 }
                 """;
