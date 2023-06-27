@@ -61,6 +61,8 @@ public class SqlGenerator {
     public static SqlGenerator insert(String jsonStr) {
         SqlGenerator generator = new SqlGenerator();
         generator.type = OperTypeEnum.INSERT;
+        JSON json = JSONUtil.parse(jsonStr);
+        generator.params = json.getByPath("params", Map.class);
 
         return generator;
     }
@@ -68,6 +70,8 @@ public class SqlGenerator {
     public static SqlGenerator update(String jsonStr) {
         SqlGenerator generator = new SqlGenerator();
         generator.type = OperTypeEnum.UPDATE;
+        JSON json = JSONUtil.parse(jsonStr);
+        generator.params = json.getByPath("params", Map.class);
 
         return generator;
     }
