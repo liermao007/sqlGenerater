@@ -1,4 +1,4 @@
-package org.xian.enums;
+package com.xian.generator.enums;
 
 /**
  * @author lgx

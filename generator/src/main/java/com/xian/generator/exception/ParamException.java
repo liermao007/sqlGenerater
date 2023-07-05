@@ -1,4 +1,4 @@
-package org.xian.exception;
+package com.xian.generator.exception;
 
 /**
  * 参数异常

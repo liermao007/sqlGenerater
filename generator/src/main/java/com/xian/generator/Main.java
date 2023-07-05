@@ -1,8 +1,8 @@
-package org.xian;
+package com.xian.generator;
 
 import cn.hutool.db.Entity;
 import cn.hutool.db.sql.SqlBuilder;
-import org.xian.utils.SQLExecutor;
+import com.xian.generator.utils.SQLExecutor;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,10 +12,7 @@ import java.util.List;
  */
 public class Main {
     public static void main(String[] args) throws SQLException {
-        testDelete();
-
-
-
+        testSelect();
     }
 
     public static void testSelect() {
@@ -31,7 +28,6 @@ public class Main {
         long l = System.currentTimeMillis();
         SqlBuilder sql = SqlGenerator.select(dataJson).sqlBuilder();
 
-        System.out.println(sql);
         List<Entity> entities = SQLExecutor.queryList(Entity.class, sql);
         System.out.println(System.currentTimeMillis() - l);
         System.out.println(sql);

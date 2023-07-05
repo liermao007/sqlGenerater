@@ -1,4 +1,4 @@
-package org.xian;
+package com.xian.generator;
 
 import cn.hutool.core.text.StrPool;
 import cn.hutool.core.util.StrUtil;
@@ -7,14 +7,14 @@ import cn.hutool.db.sql.SqlBuilder;
 import cn.hutool.json.JSON;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.xian.enums.OperTypeEnum;
-import org.xian.sql.Table;
-import org.xian.sql.TableColumn;
-import org.xian.sql.TableParam;
-import org.xian.sql.TableRelevance;
-import org.xian.utils.ColumnUtils;
-import org.xian.utils.TableRelevanceUtils;
-import org.xian.utils.TableUtils;
+import com.xian.generator.enums.OperTypeEnum;
+import com.xian.generator.sql.Table;
+import com.xian.generator.sql.TableColumn;
+import com.xian.generator.sql.TableParam;
+import com.xian.generator.sql.TableRelevance;
+import com.xian.generator.utils.ColumnUtils;
+import com.xian.generator.utils.TableRelevanceUtils;
+import com.xian.generator.utils.TableUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;

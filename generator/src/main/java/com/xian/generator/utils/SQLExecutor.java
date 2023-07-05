@@ -1,4 +1,4 @@
-package org.xian.utils;
+package com.xian.generator.utils;
 
 import cn.hutool.db.Entity;
 import cn.hutool.db.ds.DSFactory;
@@ -6,7 +6,7 @@ import cn.hutool.db.handler.BeanHandler;
 import cn.hutool.db.handler.BeanListHandler;
 import cn.hutool.db.sql.SqlBuilder;
 import cn.hutool.db.sql.SqlExecutor;
-import org.xian.exception.QueryException;
+import com.xian.generator.exception.QueryException;
 
 import java.sql.Connection;
 import java.sql.SQLException;

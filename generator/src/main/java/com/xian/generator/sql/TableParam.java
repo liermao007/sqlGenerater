@@ -1,4 +1,4 @@
-package org.xian.sql;
+package com.xian.generator.sql;
 
 /**
  * @author lgx

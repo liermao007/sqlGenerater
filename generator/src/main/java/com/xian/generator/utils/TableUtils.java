@@ -1,8 +1,7 @@
-package org.xian.utils;
+package com.xian.generator.utils;
 
-import org.xian.exception.ParamException;
-import org.xian.sql.Table;
-import org.xian.sql.TableColumn;
+import com.xian.generator.exception.ParamException;
+import com.xian.generator.sql.Table;
 
 import java.util.*;
 import java.util.stream.Collectors;

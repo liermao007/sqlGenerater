@@ -1,8 +1,7 @@
-package org.xian.utils;
-
+package com.xian.generator.utils;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
-import org.xian.sql.TableRelevance;
+import com.xian.generator.sql.TableRelevance;
 
 import java.util.ArrayList;
 import java.util.HashMap;
