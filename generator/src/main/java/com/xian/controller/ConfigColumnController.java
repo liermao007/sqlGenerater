@@ -1,6 +1,9 @@
 package com.xian.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import com.xian.domain.bo.ConfigColumnBo;
+import com.xian.domain.vo.ConfigColumnVo;
+import com.xian.service.IConfigColumnService;
 import lombok.RequiredArgsConstructor;
 import org.dromara.common.core.domain.R;
 import org.dromara.common.log.annotation.Log;
@@ -8,9 +11,6 @@ import org.dromara.common.log.enums.BusinessType;
 import org.dromara.common.mybatis.core.page.PageQuery;
 import org.dromara.common.mybatis.core.page.TableDataInfo;
 import org.dromara.common.web.core.BaseController;
-import com.xian.domain.bo.ConfigColumnBo;
-import com.xian.domain.vo.ConfigColumnVo;
-import com.xian.service.IConfigColumnService;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 

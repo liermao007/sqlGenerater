@@ -1,17 +1,17 @@
 package com.xian.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import org.dromara.common.mybatis.core.mapper.LambdaQueryWrapperX;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import lombok.RequiredArgsConstructor;
-import org.dromara.common.mybatis.core.page.PageQuery;
-import org.dromara.common.mybatis.core.page.TableDataInfo;
-import org.dromara.common.mybatis.core.service.BaseServiceImpl;
 import com.xian.domain.ConfigColumn;
 import com.xian.domain.bo.ConfigColumnBo;
 import com.xian.domain.vo.ConfigColumnVo;
 import com.xian.mapper.ConfigColumnMapper;
 import com.xian.service.IConfigColumnService;
+import lombok.RequiredArgsConstructor;
+import org.dromara.common.mybatis.core.mapper.LambdaQueryWrapperX;
+import org.dromara.common.mybatis.core.page.PageQuery;
+import org.dromara.common.mybatis.core.page.TableDataInfo;
+import org.dromara.common.mybatis.core.service.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
