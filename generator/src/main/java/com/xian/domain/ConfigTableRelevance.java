@@ -1,13 +1,5 @@
 package com.xian.domain;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.dromara.common.tenant.core.TenantEntity;
-
 /**
  * 数据库相关表关联信息
  * 

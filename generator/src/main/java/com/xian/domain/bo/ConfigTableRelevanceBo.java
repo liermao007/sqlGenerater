@@ -1,9 +1,5 @@
 package com.xian.domain.bo;
 
-import io.github.linpeilie.annotations.AutoMapper;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.dromara.common.mybatis.core.domain.BaseEntity;
 import com.xian.domain.ConfigTableRelevance;
 
 /**

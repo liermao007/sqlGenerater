@@ -2,7 +2,6 @@ package com.xian.service;
 
 import com.xian.domain.bo.ConfigColumnBo;
 import com.xian.domain.vo.ConfigColumnVo;
-import org.dromara.common.mybatis.core.service.IBaseService;
 
 /**
  * 数据库相关表字段 接口
