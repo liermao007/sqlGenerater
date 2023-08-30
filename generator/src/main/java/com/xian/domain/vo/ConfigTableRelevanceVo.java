@@ -1,9 +1,5 @@
 package com.xian.domain.vo;
 
-import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
-import com.alibaba.excel.annotation.ExcelProperty;
-import io.github.linpeilie.annotations.AutoMapper;
-import lombok.Data;
 import com.xian.domain.ConfigTableRelevance;
 
 import java.io.Serial;
